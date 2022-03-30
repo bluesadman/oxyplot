@@ -50,6 +50,18 @@ namespace OxyPlot.Series
         public string DataFieldY { get; set; }
 
         /// <summary>
+        /// Gets or sets the data field Label. The default is <c>null</c>.
+        /// </summary>
+        /// <value>The data field Label.</value>
+        public string DataFieldLabel { get; set; }
+
+        /// <summary>
+        /// Gets or sets the data field OtherLabel. The default is <c>null</c>.
+        /// </summary>
+        /// <value>The data field OtherLabel.</value>
+        public string DataFieldOtherLabel { get; set; }
+
+        /// <summary>
         /// Gets or sets the delegate used to map from <see cref="ItemsSeries.ItemsSource" /> to the <see cref="ActualPoints" />. The default is <c>null</c>.
         /// </summary>
         /// <value>The mapping.</value>
@@ -107,7 +119,7 @@ namespace OxyPlot.Series
             if (result != null)
             {
                 result.Text = StringHelper.Format(
-                    this.ActualCulture, 
+                    this.ActualCulture,
                     this.TrackerFormatString,
                     result.Item,
                     this.Title,
@@ -236,7 +248,9 @@ namespace OxyPlot.Series
                 var filler = new ListBuilder<DataPoint>();
                 filler.Add(this.DataFieldX, double.NaN);
                 filler.Add(this.DataFieldY, double.NaN);
-                filler.Fill(this.itemsSourcePoints, this.ItemsSource, args => new DataPoint(Axes.Axis.ToDouble(args[0]), Axes.Axis.ToDouble(args[1])));
+                filler.Add(this.DataFieldLabel, string.Empty);
+                filler.Add(this.DataFieldOtherLabel, string.Empty);
+                filler.Fill(this.itemsSourcePoints, this.ItemsSource, args => new DataPoint(Axes.Axis.ToDouble(args[0]), Axes.Axis.ToDouble(args[1]), args[2].ToString(), args[3].ToString()));
             }
         }
     }
