@@ -109,6 +109,7 @@ namespace OxyPlot.Axes
             this.EndPosition = 1;
 
             this.TitlePosition = 0.5;
+            this.TitleAngle = 0;
             this.TitleFormatString = "{0} [{1}]";
             this.TitleClippingLength = 0.9;
             this.TitleColor = OxyColors.Automatic;
@@ -573,6 +574,11 @@ namespace OxyPlot.Axes
         /// Gets or sets the title of the axis. The default value is <c>null</c>.
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or sets the title angle of the axis. The default value is <c>0</c>.
+        /// </summary>
+        public double TitleAngle { get; set; }
 
         /// <summary>
         /// Gets or sets the length of the title clipping rectangle (fraction of the available length of the axis). The default value is <c>0.9</c>.
